@@ -1,0 +1,16 @@
+%div.row
+  %div.col-md-6
+    %div.panel.panel-default
+      %div.panel-heading
+        %h4.panel-title
+          %span.glyphicon.glyphicon-user
+            = comment.autor
+
+      %div.panel-body 
+        
+        =comment.body
+        -if current_user 
+          -if current_user.role ==1
+            %div.row.text-right
+              %span{ class: "glyphicon glyphicon-remove"}
+              = link_to 'Destroy', [comment.hotel, comment],method: :delete,data: { confirm: 'Are you sure?' }

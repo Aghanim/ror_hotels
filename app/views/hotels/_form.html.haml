@@ -1,0 +1,26 @@
+
+%div.col-md-6
+  %div.panel.panel-success
+    %div.panel-heading
+
+    %div.panel-body
+      = simple_form_for @hotel, :html=> { :class=>'form-horizontal', :multipart=> true }, wrapper: :horizontal_form,wrapper_mappings: {check_boxes: :horizontal_radio_and_checkboxes,radio_buttons: :horizontal_radio_and_checkboxes,file: :horizontal_file_input,boolean: :horizontal_boolean}  do |f| 
+        = f.input :title
+        = f.input :star_rating, as: :radio_buttons, collection: [['1', '1'],['2', '2'],['3', '3'],['4', '4'],['5', '5']], label: 'Star rating'
+        = f.input :description, input_html: { rows: 6}
+        = f.input :breakfast_in, as: :boolean, cheked_value: @hotel.pos, uncheked_value: @hotel.neg, label: 'Breakfast included'
+        = f.input :price, label: 'Price for room'
+        = f.input :image, as: :file
+        %div.row
+      
+          %div.col-md-3.col-xs-6.col-md-offset-3
+            %a{href: '#', class: 'thumbnail'}
+              =image_tag(@hotel.image.url(:thumb_md)) if @hotel.image?
+      
+        = f.hidden_field :image_cache
+        = f.input :country
+        = f.input :state
+        = f.input :city
+        = f.input :street
+        %div.pull-right
+          = f.button :submit, :class =>'btn btn-success'

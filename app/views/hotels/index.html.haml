@@ -1,0 +1,50 @@
+%h3 List of hotels
+
+%span.glyphicon.glyphicon-sort
+= sortable "id","btn btn-default"
+= sortable "title", "btn btn-default"
+= sortable "price","btn btn-default"
+%div.col-md-9
+  -@hotels.each do |hotel|
+    %div.panel.panel-success
+      %div.panel-heading
+        %h3.panel-title= hotel.title
+
+      %div.panel-body
+        %div.col-md-3  
+          %a{href: '#', class: 'thumbnail'}
+            =image_tag(hotel.image.url(:thumb_md))
+        %div.col-md-8
+        
+          %p
+            %strong Star rating:
+            %button{ "type"=>"button", class:"btn btn-link"}
+              - hotel.star_rating.times do
+                %span.glyphicon.glyphicon-star
+
+          %p    
+            %strong Rating:
+            = hotel.rate
+          %p    
+            %strong Address:
+            = hotel.country
+            = hotel.state
+            = hotel.city
+            = hotel.street
+          %p    
+            %strong Price:
+            = hotel.price
+
+        %div.col-md-12.text-right
+
+          %span{ class: "glyphicon glyphicon-search"}
+          = link_to 'Show', hotel_path(hotel)
+          -if user_signed_in? 
+
+            -if current_user.role ==1
+
+              %span{ class: "glyphicon glyphicon-pencil"}
+              = link_to 'Edit', edit_hotel_path(hotel)
+              %span{ class: "glyphicon glyphicon-trash"}
+              = link_to 'Delete', hotel_path(hotel),method: :delete, data: { confirm: 'Are you sure?' }
+

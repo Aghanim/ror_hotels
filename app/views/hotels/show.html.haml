@@ -1,0 +1,63 @@
+%div.row.text-right
+  %div.col-md-10
+    = link_to  hotels_path do 
+      %span.glyphicon.glyphicon-arrow-left
+        Back
+    -if user_signed_in? 
+      -if current_user.role ==1  
+        = link_to edit_hotel_path(@hotel)do 
+          %span.glyphicon.glyphicon-edit
+            Edit
+%div.row.col-md-offset-1
+  
+  %div.col-md-4  
+    %a{href: '#', class: 'thumbnail',"data-toggle"=>"modal", "data-target"=>".myModal"}
+      =image_tag(@hotel.image.url(:thumb_md))
+  %div.col-md-6
+    %blockquote
+      %strong Title:
+      = @hotel.title
+    %blockquote
+      %strong Star rating:
+      %button{ "type"=>"button", class:"btn btn-link"}
+        - @hotel.star_rating.times do
+          %span.glyphicon.glyphicon-star
+    
+    %blockquote
+      %strong Address:
+      = @hotel.country
+      = @hotel.state
+      = @hotel.city
+      = @hotel.street
+
+    %blockquote
+      %strong Breakfast including:
+      = @hotel.bkf_inc
+
+    %blockquote
+      %strong Rating:
+      = @hotel.rate
+    
+
+    = render "votes/form"
+    -if flash[:alert]
+      %div.alert.alert-danger= flash[:alert]
+
+
+    %p.text-justify
+      %strong Description:
+      = @hotel.description
+
+
+%div.row.col-md-offset-1
+  -if @hotel.comments.any?
+    %h4 Comments 
+    = render @hotel.comments
+
+  %h4 Add a comment:
+  = render "comments/form"
+
+  = render "parts/image_modal"
+
+  
+

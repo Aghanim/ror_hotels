@@ -1,0 +1,5 @@
+%div.col-md-6
+  =simple_form_for ([@hotel,@hotel.comments.build])  do |f| 
+    = f.input :body, input_html: { rows: 6 }
+    %div.pull-right
+      = f.button :submit, :class =>'btn btn-success'

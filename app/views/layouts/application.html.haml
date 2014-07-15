@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title Hadvis
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+    = csrf_meta_tags
+
+  %body
+    %nav{ class:"navbar navbar-default navbar-fixed-top", "role"=>"navigation" }
+      %div.container
+        %ul.nav.navbar-nav
+          %li
+            = link_to  welcome_index_path do 
+              %span.glyphicon.glyphicon-home
+                Home
+          %li
+            = link_to  hotels_path do 
+              %span.glyphicon.glyphicon-list
+                Hotels
+
+          %li
+            = link_to new_hotel_path do
+              %span.glyphicon.glyphicon-plus 
+                Add a hotel
+  
+    %div.container.bg-success
+
+      - if current_user
+        = "Hello, #{current_user.email}"
+        = link_to "Sign out", destroy_user_session_path, :method => :delete
+      - else
+        = link_to "Sign in", new_user_session_path,:class => 'btn btn-small'
+        = link_to "Sign up", new_user_registration_path,:class => 'btn btn-small'
+
+    
+      %div.col-md-offset-2
+        %h1.text-muted Hotel Advisor
+    
+    %div.container.bg-warning
+      %div.row
+        = yield
+
