@@ -2,7 +2,7 @@
 %div.row.col-md-offset-1
   %h1 Top 5 hotels
 
-  - @top.each  do |hotel|
+  - @hotels.top(5).each  do |hotel|
 
     %div.col-md-2
       %div.thumbnail
