@@ -1,0 +1,16 @@
+%nav{ class:"navbar navbar-default navbar-fixed-top", "role"=>"navigation" }
+  %div.container
+    %ul.nav.navbar-nav
+      %li
+        = link_to  welcome_index_path do 
+          %span.glyphicon.glyphicon-home
+            Home
+      %li
+        = link_to  hotels_path do 
+          %span.glyphicon.glyphicon-list
+            Hotels
+
+      %li
+        = link_to new_hotel_path do
+          %span.glyphicon.glyphicon-plus 
+            Add a hotel
