@@ -79,7 +79,7 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
-
+config.include Devise::TestHelpers, :type => :controller
 config.include Capybara::DSL
 config.include FactoryGirl::Syntax::Methods
 

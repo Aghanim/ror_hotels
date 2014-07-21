@@ -27,7 +27,11 @@ end
 
 # метод показать запись по id
 def show
-  @hotel = Hotel.find(params[:id])
+  #@hotel = Hotel.find(params[:id])
+  unless @hotel= Hotel.where(id: params[:id]).first
+    render text: "Page not found", status: 404
+      
+    end
 end
 
 
@@ -52,10 +56,16 @@ end
 
 # метод удалить
 def destroy
-  @hotel = Hotel.find(params[:id])
+
+  unless @hotel= Hotel.where(id: params[:id]).first
+    render text: "Page not found", status: 404
+  else
   @hotel.destroy
  
   redirect_to hotels_path
+
+  end
+
 end
 
 
@@ -64,7 +74,7 @@ end
   def check_admin_logged_in! # admin must be logged in
       
         if user_signed_in? then
-          if current_user.role != 1 then redirect_to welcome_index_path end
+          if current_user.role != 1 then redirect_to root_path end
         end
   end
   

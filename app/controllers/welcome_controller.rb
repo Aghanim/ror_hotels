@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
  
-  @hotels = Helperclass.new
+  @hotels = Hotel.new
 
   end
 end

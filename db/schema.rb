@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713054843) do
+ActiveRecord::Schema.define(version: 20140721153345) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20140713054843) do
     t.integer  "star_rating"
     t.integer  "breakfast_in"
     t.text     "description"
-    t.string   "photo"
     t.float    "price",        limit: 24
     t.string   "country"
     t.string   "state"
