@@ -10,5 +10,5 @@ RSpec.describe Comment  do
   expect(comment.autor).to eq("no name")
 
   end
-	
+
 end
