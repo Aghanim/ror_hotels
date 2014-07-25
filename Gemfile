@@ -10,6 +10,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'star_ratings'
 
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl'
@@ -19,7 +21,16 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+
+group :development, :test do
+  gem 'mysql2'
+end
+
+group :production do
+  gem 'pg'
+end
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
