@@ -3,6 +3,7 @@
   = flash[:error]
 %div{class:"modal-body"}
   %div.text-center
+
     = form_for ([@hotel,@hotel.votes.build]) do |f| 
             
       = f.radio_button :mark,1, class: 'star',checked: true
