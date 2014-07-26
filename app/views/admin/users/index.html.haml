@@ -1,0 +1,30 @@
+%div.col-md-9
+  %h3 Users
+  %div.panel.panel-success
+    %div.panel-heading
+    %div.panel-body
+      %table.table.table-striped.table-bordered
+        %tr
+          %th.text-center
+            %span.glyphicon.glyphicon-sort
+            = sortable "id","btn btn-link"
+          %th.text-center
+            %span.glyphicon.glyphicon-sort
+            = sortable "email", "btn btn-link"
+          %th.text-center
+            %span.glyphicon.glyphicon-sort
+            = sortable "role","btn btn-link"
+          %th{colspan:2, class:"text-center"}Options
+       
+        -@users.each do |user|
+          %tr
+            %td= user.id
+            %td= user.email
+            %td= user.getrole
+            %td
+              %span.glyphicon.glyphicon-pencil
+              = link_to 'Edit', edit_admin_user_path(user)
+            %td
+              %span.glyphicon.glyphicon-trash
+              = link_to 'Delete', admin_user_path(user),method: :delete, data: { confirm: '  Are you sure?' }
+

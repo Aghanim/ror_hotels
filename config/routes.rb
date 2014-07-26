@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :hotels do
-     resources :comments
-     resources :votes
-    end
+    resources :comments
+    resources :votes
+  end
+  namespace :admin do
+    resources :users
+  end
   
   root :to =>'welcome#index'
   end

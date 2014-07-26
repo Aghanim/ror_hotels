@@ -61,7 +61,7 @@ end
   private
     def check_admin_logged_in! # admin must be logged in
       if user_signed_in? then
-        if current_user.role != 1 then redirect_to root_path end
+        unless User.is_admin?(current_user.role) then redirect_to root_path end
       end
     end
   

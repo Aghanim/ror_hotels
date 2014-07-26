@@ -4,7 +4,7 @@
       %span.glyphicon.glyphicon-arrow-left
         Back
     -if user_signed_in? 
-      -if current_user.role ==1  
+      -if User.is_admin?(current_user.role)  
         = link_to edit_hotel_path(@hotel)do 
           %span.glyphicon.glyphicon-edit
             Edit

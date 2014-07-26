@@ -1,0 +1,12 @@
+
+%div.col-md-4
+  %div.panel.panel-success
+    %div.panel-heading
+
+    %div.panel-body
+      = simple_form_for @user, :url => admin_user_path, :html=> { :class=>'form-horizontal'}, wrapper: :horizontal_form  do |f| 
+        = f.input :email, disabled: true, hint: 'You cannot change user email.'
+        = f.input :role, collection: [['admin',1],['user',0]], label:'role'
+
+        %div.pull-right
+          = f.button :submit, :class =>'btn btn-success'

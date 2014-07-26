@@ -1,10 +1,11 @@
-%h3 List of hotels
+
 
 %span.glyphicon.glyphicon-sort
 = sortable "id","btn btn-default"
 = sortable "title", "btn btn-default"
 = sortable "price","btn btn-default"
 %div.col-md-9
+  %h3 List of hotels
   -@hotels.each do |hotel|
     %div.panel.panel-success
       %div.panel-heading
@@ -41,7 +42,7 @@
           = link_to 'Show', hotel_path(hotel)
           -if user_signed_in? 
 
-            -if current_user.role ==1
+            -if User.is_admin?(current_user.role)
 
               %span{ class: "glyphicon glyphicon-pencil"}
               = link_to 'Edit', edit_hotel_path(hotel)
