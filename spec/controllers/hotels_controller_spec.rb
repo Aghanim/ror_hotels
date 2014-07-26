@@ -36,7 +36,7 @@ RSpec.describe HotelsController  do
     @user = create(:user)
     # логинимся под ним
     sign_in @user
-  end
+    end
   
     it "redirect to show template if hotel is valid" do
       post :create, hotel: {title: "test", star_rating: 5 , price: 100}
