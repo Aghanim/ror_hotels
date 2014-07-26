@@ -1,7 +1,6 @@
 module Admin
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  #закоментировано пока не придумаю как сделать дефолтного админа
   #before_filter :check_admin_logged_in!
   helper_method :sort_column, :sort_direction
 
