@@ -8,11 +8,10 @@
         = f.input :title
         = f.input :star_rating, as: :radio_buttons, collection: [['1', '1'],['2', '2'],['3', '3'],['4', '4'],['5', '5']], label: 'Star rating'
         = f.input :description, input_html: { rows: 6}
-        = f.input :breakfast_in, as: :boolean, cheked_value: @hotel.pos, uncheked_value: @hotel.neg, label: 'Breakfast included'
+        = f.input :breakfast_in, as: :boolean, cheked_value: 1, uncheked_value: 0, label: 'Breakfast included'
         = f.input :price, label: 'Price for room'
         = f.input :image, as: :file
-        %div.row
-      
+        %div.row      
           %div.col-md-3.col-xs-6.col-md-offset-3
             %a{href: '#', class: 'thumbnail'}
               =image_tag(@hotel.image.url(:thumb_md)) if @hotel.image?

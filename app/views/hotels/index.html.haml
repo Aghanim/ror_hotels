@@ -25,7 +25,7 @@
 
           %p    
             %strong Rating:
-            = hotel.rate
+            = hotel.votes.sum('mark')
           %p    
             %strong Address:
             = hotel.country

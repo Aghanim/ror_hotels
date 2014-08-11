@@ -12,7 +12,7 @@
           %br
           %span.label.label-primary
             rating :
-            = hotel.rate
+            = hotel.votes.sum('mark')
 
           %p
             - hotel.star_rating.times do

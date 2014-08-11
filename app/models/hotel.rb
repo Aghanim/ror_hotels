@@ -12,22 +12,9 @@ class Hotel < ActiveRecord::Base
   validates :star_rating, inclusion: { in: 1..5, message: "%{value} is not a valid vote" } 
   validates :description, length: { maximum: 1000, too_long: "%{count} characters is the maximum allowed" }
 
-  def pos
-    @pos = 1
-  end
-
-  def neg
-	  @neg = 0
-  end
-  
-  def bkf_inc
-    self.breakfast_in == 1? @bkf_inc = "yes" : @bkf_inc = "no"
-  end
-
-  def rate
-    rate = self.votes.sum('mark')
-  end
-
+  #===========================
+  #1 - да, 0 - нет
+  #===========================
 
   def top(size)
     top =Array.new()

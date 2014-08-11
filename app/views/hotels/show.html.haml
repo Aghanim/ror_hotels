@@ -32,7 +32,7 @@
 
     %blockquote
       %strong Breakfast including:
-      = @hotel.bkf_inc
+      = @hotel.breakfast_in == 1? "yes" : "no"
     
     %blockquote
       %strong Price:
@@ -40,7 +40,7 @@
 
     %blockquote
       %strong Rating:
-      = @hotel.rate
+      = @hotel.votes.sum('mark')
     
 
     = render "votes/form"
