@@ -14,3 +14,11 @@
         = link_to new_hotel_path do
           %span.glyphicon.glyphicon-plus 
             Add a hotel
+          
+      -if user_signed_in? 
+        -if User.is_admin?(current_user.role)
+          %li
+            = link_to admin_index_path do
+              %span.glyphicon.glyphicon-dashboard 
+                Dashboard
+     

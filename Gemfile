@@ -9,6 +9,7 @@ gem 'country_select'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'star_ratings'
+gem 'will_paginate', '~> 3.0.5'
 
 gem 'rails_12factor', group: :production
 

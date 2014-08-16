@@ -5,9 +5,7 @@ class HotelsController < ApplicationController
 
  # метод 
   def new
-
-    @hotel = Hotel.new
-  
+    @hotel = Hotel.new 
   end
 
 
@@ -15,6 +13,8 @@ class HotelsController < ApplicationController
 #метод создать запись
   def create
     @hotel = Hotel.new(hotel_params)
+    @hotel.user_id = current_user.id
+    @hotel.status = 1 #pending
     if @hotel.save
       redirect_to @hotel
     else
@@ -29,9 +29,9 @@ class HotelsController < ApplicationController
     end
   end
 
-# метод показать все записи
+# метод показать все записи где статус approved т.е. 2
   def index
-    @hotels = Hotel.order(sort_column + " " + sort_direction)
+    @hotels = Hotel.where(status: 2).order(sort_column + " " + sort_direction)
   end
 
 # метод редактировать

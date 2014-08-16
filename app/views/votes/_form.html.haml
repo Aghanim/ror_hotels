@@ -1,8 +1,8 @@
-%h4
+%h5
   Vote hotel from 1 to 5
   = flash[:error]
 %div{class:"modal-body"}
-  %div.text-center
+  %div.text-left
     = form_for ([@hotel,@hotel.votes.build]) do |f| 
             
       = f.radio_button :mark,1, class: 'star',checked: true

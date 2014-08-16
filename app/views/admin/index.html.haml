@@ -1,0 +1,27 @@
+%div.col-md-12
+  %div.row
+    %div.col-md-12
+      %div.panel.panel-default        
+        %div.panel-body  
+          %div.row
+            %div.col-md-6
+              %div.panel.panel-primary
+                %div.panel-heading
+                  %span.glyphicon.glyphicon-user
+                  User
+                %div.panel-body
+                  = User.count
+                  total
+                %div.panel-footer.text-right 
+                  = link_to 'Details', admin_users_path, class:"btn btn-primary"
+            %div.col-md-6
+              %div.panel.panel-primary
+                %div.panel-heading
+                  %span.glyphicon.glyphicon-home
+                  Hotels
+                %div.panel-body
+                  = Hotel.count
+                  total
+                %div.panel-footer.text-right 
+                  = link_to 'Details', admin_hotels_path, class:"btn btn-primary"
+         

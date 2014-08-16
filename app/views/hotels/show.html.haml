@@ -14,46 +14,45 @@
     %a{href: '#', class: 'thumbnail',"data-toggle"=>"modal", "data-target"=>".myModal"}
       =image_tag(@hotel.image.url(:thumb_md))
   %div.col-md-6
-    %blockquote
+    %h4
       %strong Title:
       = @hotel.title
-    %blockquote
-      %strong Star rating:
-      %button{ "type"=>"button", class:"btn btn-link"}
-        - @hotel.star_rating.times do
-          %span.glyphicon.glyphicon-star
     
-    %blockquote
+    %h4
+      %strong Star rating:
+      - @hotel.star_rating.times do
+        %span.glyphicon.glyphicon-star
+    
+    %h4
       %strong Address:
       = @hotel.country
       = @hotel.state
       = @hotel.city
       = @hotel.street
-
-    %blockquote
+    
+    %h4
       %strong Breakfast including:
       = @hotel.breakfast_in == 1? "yes" : "no"
     
-    %blockquote
+    %h4
       %strong Price:
       = @hotel.price
 
-    %blockquote
+    %h4
       %strong Rating:
       = @hotel.votes.sum('mark')
-    
-
-    = render "votes/form"
-    -if flash[:alert]
-      %div.alert.alert-danger= flash[:alert]
-
 
     %p.text-justify
       %strong Description:
       = @hotel.description
+%div.row.col-md-offset-1
+  = render "votes/form"
+  -if flash[:alert]
+    %div.alert.alert-danger= flash[:alert]
 
 
 %div.row.col-md-offset-1
+
   -if @hotel.comments.any?
     %h4 Comments 
     = render @hotel.comments

@@ -1,0 +1,13 @@
+%h3 Editing the post
+
+%div.col-md-4
+  %div.panel.panel-success
+    %div.panel-heading
+
+    %div.panel-body
+      = simple_form_for @hotel, :url => admin_hotel_path, :html=> { :class=>'form-horizontal'}, wrapper: :horizontal_form  do |f| 
+        = f.input :status, collection: [['pending',1],['approved',2],['rejected',3]]
+        %div.pull-right
+          = f.button :submit, :class =>'btn btn-success'
+= link_to 'Back', admin_hotels_path
+ 

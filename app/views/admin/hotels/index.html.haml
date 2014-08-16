@@ -1,0 +1,53 @@
+%div.col-md-11
+  %h3 Hotels
+  %div.panel.panel-success
+    %div.panel-heading
+    %div.panel-body                
+      %table.table.table-striped.table-bordered.table-condensed
+        %thead
+          %tr
+            %th.text-center
+              %span.glyphicon.glyphicon-sort
+              = sortable "id","btn btn-link"
+            %th.text-center
+              Image  
+            %th.text-center
+              %span.glyphicon.glyphicon-sort
+              = sortable "title", "btn btn-link"
+            %th.text-center
+              %span.glyphicon.glyphicon-sort
+              = sortable "country","btn btn-link"
+            %th.text-center
+              %span.glyphicon.glyphicon-sort
+              = sortable "price","btn btn-link"
+            %th.text-center
+              %span.glyphicon.glyphicon-sort
+              = sortable "status","btn btn-link"
+            %th{colspan:2, class:"text-center"}Options
+        %tbody
+          %tr
+            %td{colspan:5}
+            %td.text-center
+              = render 'status_search_form'
+            %td.text-center{colspan:2}
+              = link_to 'Reset filters', admin_hotels_path, {:class => 'btn btn-default'}
+         
+          -@hotels.each do |hotel|
+            %tr
+              %td= hotel.id
+              %td  
+                =image_tag(hotel.image.url(:thumb_min))
+              %td= hotel.title
+              %td= hotel.country
+              %td= hotel.price
+              %td
+                = hotel.status_decode
+                -if hotel.status == 1 #pending
+                  = link_to 'Change', edit_admin_hotel_path(hotel)  
+              %td
+                %span.glyphicon.glyphicon-pencil
+                = link_to 'Edit', edit_hotel_path(hotel)
+              %td
+                %span.glyphicon.glyphicon-trash
+                = link_to 'Delete', admin_hotel_path(hotel),method: :delete, data: { confirm: '  Are you sure?' }
+      = will_paginate @hotels

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
-  has_one :votes	
+  has_many :hotels
+  has_many :votes #окончание имеет значение!	
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -20,5 +21,13 @@ class User < ActiveRecord::Base
   def getrole
     self.role == 1? @getrole = Admin : @getrole = Common
   end
+
+  def self.search(search,field)
+  if search
+    where("#{field} LIKE ?", "%#{search}%")
+  else
+    all
+  end
+end
   
 end

@@ -7,13 +7,16 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}
 
   get 'welcome/index'
+  get 'admin/index'
 
   resources :hotels do
     resources :comments
     resources :votes
   end
+
   namespace :admin do
     resources :users
+    resources :hotels
   end
   
   root :to =>'welcome#index'

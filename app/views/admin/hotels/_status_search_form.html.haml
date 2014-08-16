@@ -1,0 +1,6 @@
+= form_tag admin_hotels_path, :method => 'get' do
+  = hidden_field_tag :direction, params[:direction] 
+  = hidden_field_tag :sort, params[:sort]
+  %p
+    = select_tag(:search, options_for_select([['pending', 1], ['approved', 2],['rejected',3] ], params[:search]))
+    = submit_tag "Search", :status => nil
